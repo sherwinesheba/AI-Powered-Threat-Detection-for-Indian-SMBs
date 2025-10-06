@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>CyberShield Dashboard</title></head>
+<body>
+    <h1>Threat Detection Dashboard</h1>
+    <h2>Recent Alerts</h2>
+    <ul>
+        {% for alert in alerts %}
+        <li>{{ alert.threat_type }} - {{ alert.description }} ({{ alert.severity }}) - {{ alert.timestamp }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Compliance Report</h2>
+    <p>{{ report }}</p>
+    <form action="/api/scan_vuln" method="POST">
+        <input type="text" name="range" placeholder="Network range e.g., 192.168.1.0/24">
+        <button type="submit">Scan Vulnerabilities</button>
+    </form>
+</body>
+</html>
